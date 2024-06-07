@@ -13,10 +13,10 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link as RouterLink } from 'react-router-dom';
 
-const pages = ['Home', 'Services', 'Skills', 'Projects', 'About', 'Contact'];
-const pageLinks = ['home', '#services', '#skills', 'projects', '#about', '#contact'];
+const sections = ['Home', 'Services', 'Skills', 'About', 'Contact'];
+const sectionIds = ['#home', '#services', '#skills', '#about', '#contact'];
 
 function Header() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -29,6 +29,13 @@ function Header() {
     setDrawerOpen(false);
   };
 
+  const scrollToSection = (id) => {
+    const element = document.querySelector(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <AppBar position="sticky" sx={{ bgcolor: 'lightblue', color: 'black' }}>
       <Container maxWidth="xl">
@@ -37,8 +44,8 @@ function Header() {
           <Typography
             variant="h6"
             noWrap
-            component={Link} 
-            to="home" 
+            component={RouterLink}
+            to="/"
             sx={{
               mr: 8,
               display: { xs: 'none', md: 'flex' },
@@ -73,11 +80,14 @@ function Header() {
                 onKeyDown={handleDrawerClose}
               >
                 <List>
-                  {pages.map((page, index) => (
-                    <ListItem button key={page} component={Link} to={pageLinks[index]}>
-                      <ListItemText primary={page} />
+                  {sections.map((section, index) => (
+                    <ListItem button key={section} onClick={() => scrollToSection(sectionIds[index])}>
+                      <ListItemText primary={section} />
                     </ListItem>
                   ))}
+                  <ListItem button to="/projects">
+                    <ListItemText primary="Projects" />
+                  </ListItem>
                 </List>
               </Box>
             </Drawer>
@@ -87,8 +97,8 @@ function Header() {
           <Typography
             variant="h5"
             noWrap
-            component={Link} // Use Link component for routing
-            to="#app-bar-with-responsive-menu" // Update the link destination
+            component={RouterLink}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -104,17 +114,22 @@ function Header() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page, index) => (
+            {sections.map((section, index) => (
               <Button
-                key={page}
-                onClick={handleDrawerClose}
+                key={section}
+                onClick={() => scrollToSection(sectionIds[index])}
                 sx={{ my: 2, color: 'black', display: 'block' }}
-                component={Link} // Use Link component for routing
-                to={pageLinks[index]} // Update the link destination
               >
-                {page}
+                {section}
               </Button>
             ))}
+            <Button
+              component={RouterLink}
+              to="/projects"
+              sx={{ my: 2, color: 'black', display: 'block' }}
+            >
+              Projects
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

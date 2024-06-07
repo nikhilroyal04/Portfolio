@@ -1,16 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { Typography, Button, Box, Grid, Card, CardMedia, CardContent, LinearProgress, TextField, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import {
+  Typography,
+  Button,
+  Box,
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
+  LinearProgress,
+  TextField,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  useTheme,
+  useMediaQuery,
+  Container,
+} from "@mui/material";
 import Profile from "../../assets/images/profile.jpg";
 import About1 from "../../assets/images/About1.jpg";
 import About2 from "../../assets/images/About2.jpg";
 import Service1 from "../../assets/images/Service1.webp";
 import Service2 from "../../assets/images/Service2.jpg";
 import Service3 from "../../assets/images/Service3.jpeg";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 export default function Home() {
-  const [typedText, setTypedText] = useState('');
+  const [typedText, setTypedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const text = " Let's work together and bring your ideas to life! ";
 
   useEffect(() => {
@@ -25,7 +44,7 @@ export default function Home() {
           setIsTyping(false);
           setTimeout(() => {
             setIsTyping(true);
-            setTypedText('');
+            setTypedText("");
             currentIndex = 0;
           }, 1000);
         }
@@ -37,7 +56,7 @@ export default function Home() {
     } else {
       setTimeout(() => {
         setIsTyping(true);
-        setTypedText('');
+        setTypedText("");
         currentIndex = 0;
       }, 1000);
     }
@@ -49,11 +68,11 @@ export default function Home() {
     e.preventDefault();
     setOpenDialog(true);
     setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      message: ''
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      message: "",
     });
   };
 
@@ -65,77 +84,157 @@ export default function Home() {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const skills = [
-    { name: 'HTML', value: 100, color: '#6DD5FA' },
-    { name: 'CSS', value: 95, color: '#FF92A7' },
-    { name: 'JavaScript', value: 85, color: '#FCE788' },
-    { name: 'React', value: 85, color: '#FFC947' },
-    { name: 'Material-UI', value: 90, color: '#69F0AE' },
-    { name: 'Chakra UI', value: 95, color: '#FF8A80' },
-    { name: 'Node.js', value: 78, color: '#A7F0BA' },
-    { name: 'Express', value: 82, color: '#FFD180' },
-    { name: 'MySQL', value: 98, color: '#81D4FA' },
-    { name: 'MongoDB', value: 90, color: '#FFA8A8' }
+    { name: "HTML", value: 100, color: "#6DD5FA" },
+    { name: "CSS", value: 95, color: "#FF92A7" },
+    { name: "JavaScript", value: 85, color: "#FCE788" },
+    { name: "React", value: 85, color: "#FFC947" },
+    { name: "Material-UI", value: 90, color: "#69F0AE" },
+    { name: "Chakra UI", value: 95, color: "#FF8A80" },
+    { name: "Node.js", value: 78, color: "#A7F0BA" },
+    { name: "Express", value: 82, color: "#FFD180" },
+    { name: "MySQL", value: 98, color: "#81D4FA" },
+    { name: "MongoDB", value: 90, color: "#FFA8A8" },
   ];
 
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: "",
   });
   const [openDialog, setOpenDialog] = useState(false);
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" mt={25} mb={5} minHeight={500} >
+    <Box
+      id="home"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      flexDirection="column"
+      pb={2}
+      pt={20}
+      minHeight={500}
+    >
       {/* Content Section */}
-      <Box display="flex" alignItems="center" >
-        {/* Left section containing text and button */}
-        <Box display="flex" alignItems="center" marginRight={2}>
-          <Box width={900} justifyContent="space-between">
-            <Typography variant="h5" gutterBottom width={600} style={{ height: '130px', overflowY: 'hidden' }}>
-              I'm a passionate developer with expertise in React, Node.js, and MongoDB. I love building efficient, scalable, and user-friendly web applications.<br/> {typedText}
-            </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              style={{ marginTop: "20px" }}
-              href="https://www.linkedin.com/in/nikhil-chaudhary-12819a19a"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Hire me
-            </Button>
-          </Box>
-        </Box>
-        {/* Right section containing image */}
-        <img src={Profile} alt="Your Image" style={{ maxWidth: '500px', width: "350px", height: 'auto', borderRadius: '50%' }} />
-      </Box>
+      <Container
+        sx={{
+          paddingLeft: { xs: 5, sm: 10, md: 20, lg: 20 }, // Adjust these values for left margin
+          paddingRight: { xs: 5, sm: 10, md: 20, lg: 20 }, // Adjust these values for right margin
+        }}
+      >
+        <Grid container alignItems="center">
+          {/* Left section containing text and button */}
+          <Grid
+            item
+            container
+            xs={12}
+            md={8}
+            alignItems="center"
+            marginBottom={{ xs: 2, md: 0 }}
+          >
+            <Grid item xs={12}>
+              <Typography
+                variant="h5"
+                gutterBottom
+                style={{ height: "130px", overflowY: "hidden" }}
+              >
+                I'm a passionate developer with expertise in React, Node.js, and
+                MongoDB. I love building efficient, scalable, and user-friendly
+                web applications.
+                <br /> {typedText}
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                variant="contained"
+                color="primary"
+                style={{ marginTop: "20px" }}
+                href="https://www.linkedin.com/in/nikhil-chaudhary-12819a19a"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Hire me
+              </Button>
+            </Grid>
+          </Grid>
+          {/* Right section containing image */}
+          {!isSmallScreen && (
+            <Grid item xs={12} md={4} container justifyContent="center">
+              <img
+                src={Profile}
+                alt="Your Image"
+                style={{
+                  maxWidth: "100%",
+                  width: "350px",
+                  height: "auto",
+                  borderRadius: "50%",
+                }}
+              />
+            </Grid>
+          )}
+        </Grid>
+      </Container>
       {/* About Me Section */}
-      <Box mt={20} width="70%" textAlign="center" p={3} borderRadius={8}>
-        <Typography variant="h3" gutterBottom style={{ marginBottom: '30px', color: '#333' }}>About Me</Typography>
+      <Box
+        id="about"
+        mt={20}
+        width="70%"
+        textAlign="center"
+        p={3}
+        borderRadius={8}
+      >
+        <Typography
+          variant="h3"
+          gutterBottom
+          style={{ marginBottom: "30px", color: "#333" }}
+        >
+          About Me
+        </Typography>
         <Grid container spacing={3} justifyContent="center" alignItems="center">
           <Grid item xs={12} md={4}>
             {/* Left section containing an image */}
-            <img src={About1} alt="Profile" style={{ width: '100%', maxWidth: '600px', borderRadius: '10px' }} />
+            <img
+              src={About1}
+              alt="Profile"
+              style={{ width: "100%", maxWidth: "600px", borderRadius: "10px" }}
+            />
           </Grid>
-          <Grid item xs={12} md={6} style={{ margin: 'auto' }}>
+          <Grid item xs={12} md={6} style={{ margin: "auto" }}>
             {/* Right section containing the about me paragraph */}
-            <Typography variant="body1" style={{ lineHeight: '1.6', color: '#555', textAlign: 'left', maxWidth: '100%' }}>
-              Greetings! I'm Nikhil Chaudhary, a dynamic Web Developer and Creative Innovator with a fervent enthusiasm for crafting immersive digital experiences. Fuelled by a blend of creativity and technical prowess, I thrive in both Frontend and Backend realms, sculpting elegant user interfaces while engineering robust backend solutions. My journey in web development has been enriched by diverse experiences, from pioneering passion projects to collaborating on large-scale ventures. With a relentless drive for excellence and a penchant for pushing boundaries, I'm constantly exploring new technologies and methodologies to redefine the digital landscape. Let's embark on a journey of innovation together!
+            <Typography
+              variant="body1"
+              style={{
+                lineHeight: "1.6",
+                color: "#555",
+                textAlign: "left",
+                maxWidth: "100%",
+              }}
+            >
+              Greetings! I'm Nikhil Chaudhary, a dynamic Web Developer and
+              Creative Innovator with a fervent enthusiasm for crafting
+              immersive digital experiences. Fuelled by a blend of creativity
+              and technical prowess, I thrive in both Frontend and Backend
+              realms, sculpting elegant user interfaces while engineering robust
+              backend solutions. My journey in web development has been enriched
+              by diverse experiences, from pioneering passion projects to
+              collaborating on large-scale ventures. With a relentless drive for
+              excellence and a penchant for pushing boundaries, I'm constantly
+              exploring new technologies and methodologies to redefine the
+              digital landscape. Let's embark on a journey of innovation
+              together!
             </Typography>
           </Grid>
         </Grid>
       </Box>
 
-
       {/* Services Section */}
-      <Box mt={20} bgcolor="lightblue" width="100%" p={3} pb={18}>
+      <Box id="services" mt={20} bgcolor="lightblue" width="100%" p={3} pb={18}>
         <Typography variant="h4" align="center" gutterBottom mb={5}>
           My Services
           <Typography variant="body2" align="center">
@@ -145,7 +244,15 @@ export default function Home() {
         <Grid container spacing={5} justifyContent="center">
           {/* Frontend */}
           <Grid item>
-            <Card style={{ width: '400px', height: '300px', borderRadius: '12px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', transition: 'transform 0.3s ease-in-out' }}>
+            <Card
+              style={{
+                width: "400px",
+                height: "300px",
+                borderRadius: "12px",
+                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                transition: "transform 0.3s ease-in-out",
+              }}
+            >
               <CardMedia
                 component="img"
                 height="200"
@@ -153,14 +260,26 @@ export default function Home() {
                 alt="Frontend"
               />
               <CardContent>
-                <Typography variant="h5" fontWeight="bold">Frontend</Typography>
-                <Typography variant="body2">HTML, CSS, JavaScript, React</Typography>
+                <Typography variant="h5" fontWeight="bold">
+                  Frontend
+                </Typography>
+                <Typography variant="body2">
+                  HTML, CSS, JavaScript, React
+                </Typography>
               </CardContent>
             </Card>
           </Grid>
           {/* Backend */}
           <Grid item>
-            <Card style={{ width: '400px', height: '300px', borderRadius: '12px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', transition: 'transform 0.3s ease-in-out' }}>
+            <Card
+              style={{
+                width: "400px",
+                height: "300px",
+                borderRadius: "12px",
+                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                transition: "transform 0.3s ease-in-out",
+              }}
+            >
               <CardMedia
                 component="img"
                 height="200"
@@ -168,14 +287,26 @@ export default function Home() {
                 alt="Backend"
               />
               <CardContent>
-                <Typography variant="h5" fontWeight="bold">Backend</Typography>
-                <Typography variant="body2">Node.js, Express, MongoDB</Typography>
+                <Typography variant="h5" fontWeight="bold">
+                  Backend
+                </Typography>
+                <Typography variant="body2">
+                  Node.js, Express, MongoDB
+                </Typography>
               </CardContent>
             </Card>
           </Grid>
           {/* Database */}
           <Grid item>
-            <Card style={{ width: '400px', height: '300px', borderRadius: '12px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', transition: 'transform 0.3s ease-in-out' }}>
+            <Card
+              style={{
+                width: "400px",
+                height: "300px",
+                borderRadius: "12px",
+                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                transition: "transform 0.3s ease-in-out",
+              }}
+            >
               <CardMedia
                 component="img"
                 height="200"
@@ -183,7 +314,9 @@ export default function Home() {
                 alt="Database"
               />
               <CardContent>
-                <Typography variant="h5" fontWeight="bold">Database</Typography>
+                <Typography variant="h5" fontWeight="bold">
+                  Database
+                </Typography>
                 <Typography variant="body2">MySQL, MongoDB, SQL</Typography>
               </CardContent>
             </Card>
@@ -192,36 +325,135 @@ export default function Home() {
       </Box>
 
       {/* Skills Section */}
-      <Box mt={10} width="70%" textAlign="center">
-        <Typography variant="h4" fontWeight="bold" gutterBottom style={{ color: '#333', marginBottom: "50px" }}>My Skills</Typography>
+      <Box id="skills" mt={10} width="70%" textAlign="center">
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          gutterBottom
+          style={{ color: "#333", marginBottom: "50px" }}
+        >
+          My Skills
+        </Typography>
         <Grid container spacing={3}>
           {/* Left section containing text */}
-          <Grid item xs={12} md={6} style={{ textAlign: 'left', marginRight: '30px' }}>
-            <Typography variant="h4" fontWeight="bold" gutterBottom style={{ color: '#333' }}>My Creative skills</Typography>
-            <Typography variant="body1" style={{ lineHeight: '1.6', color: '#555', textAlign: 'left', maxWidth: '100%' }}>
-              Driven by an unrelenting passion for web development, I aspire to join a prestigious organization where I can leverage my skills to create impactful digital solutions. <br />
-              With a commitment to lifelong learning and an eagerness to embrace new challenges, I am dedicated to continuously enhancing my expertise and staying at the forefront of technological advancements.
+          <Grid
+            item
+            xs={12}
+            md={6}
+            style={{ textAlign: "left", marginRight: "30px" }}
+          >
+            <Typography
+              variant="h4"
+              fontWeight="bold"
+              gutterBottom
+              style={{ color: "#333" }}
+            >
+              My Creative skills
+            </Typography>
+            <Typography
+              variant="body1"
+              style={{
+                lineHeight: "1.6",
+                color: "#555",
+                textAlign: "left",
+                maxWidth: "100%",
+              }}
+            >
+              Driven by an unrelenting passion for web development, I aspire to
+              join a prestigious organization where I can leverage my skills to
+              create impactful digital solutions. <br />
+              With a commitment to lifelong learning and an eagerness to embrace
+              new challenges, I am dedicated to continuously enhancing my
+              expertise and staying at the forefront of technological
+              advancements.
             </Typography>
 
-            <Typography variant="h4" fontWeight="bold" gutterBottom style={{ color: '#333', marginTop: '20px' }}>Experience</Typography>
-            <Typography variant="body1" style={{ lineHeight: '1.6', color: '#555', textAlign: 'left', maxWidth: '100%' }}>
-              <strong>Internship at Tangential Ed. Power Pvt. Ltd:</strong><br />
-              During my enriching internship at Tangential Ed. Power Pvt. Ltd, I played a pivotal role as a Full Stack Web Developer, where I immersed myself in every stage of the web development lifecycle. I led the design and implementation of a dynamic, responsive, and user-centric website, ensuring a seamless user experience through intuitive UI/UX design principles.<br /><br />
-              One of the highlights of my experience was developing a robust CRUD (Create, Read, Update, Delete) application from scratch, showcasing my proficiency in both frontend and backend development. By leveraging technologies like React for the frontend and Node.js coupled with MongoDB for the backend, I engineered a scalable and efficient system that met the diverse needs of our users.
+            <Typography
+              variant="h4"
+              fontWeight="bold"
+              gutterBottom
+              style={{ color: "#333", marginTop: "20px" }}
+            >
+              Experience
             </Typography>
-            <Typography variant="body1" style={{ lineHeight: '1.6', color: '#555', textAlign: 'left', maxWidth: '100%' }}>
-              Additionally, I collaborated closely with the design team to translate wireframes and mockups into interactive and visually stunning web interfaces. Through iterative development cycles and user feedback, I refined the UI to enhance usability and accessibility, resulting in a highly engaging digital platform.<br /><br />
-              Beyond technical contributions, I actively participated in brainstorming sessions and team meetings, contributing innovative ideas and insights to drive continuous improvement and innovation within the organization. This experience not only honed my technical skills but also fostered a collaborative and growth-oriented mindset essential for success in the fast-paced world of web development.
+            <Typography
+              variant="body1"
+              style={{
+                lineHeight: "1.6",
+                color: "#555",
+                textAlign: "left",
+                maxWidth: "100%",
+              }}
+            >
+              <strong>Internship at Tangential Ed. Power Pvt. Ltd:</strong>
+              <br />
+              During my enriching internship at Tangential Ed. Power Pvt. Ltd, I
+              played a pivotal role as a Full Stack Web Developer, where I
+              immersed myself in every stage of the web development lifecycle. I
+              led the design and implementation of a dynamic, responsive, and
+              user-centric website, ensuring a seamless user experience through
+              intuitive UI/UX design principles.
+              <br />
+              <br />
+              One of the highlights of my experience was developing a robust
+              CRUD (Create, Read, Update, Delete) application from scratch,
+              showcasing my proficiency in both frontend and backend
+              development. By leveraging technologies like React for the
+              frontend and Node.js coupled with MongoDB for the backend, I
+              engineered a scalable and efficient system that met the diverse
+              needs of our users.
+            </Typography>
+            <Typography
+              variant="body1"
+              style={{
+                lineHeight: "1.6",
+                color: "#555",
+                textAlign: "left",
+                maxWidth: "100%",
+              }}
+            >
+              Additionally, I collaborated closely with the design team to
+              translate wireframes and mockups into interactive and visually
+              stunning web interfaces. Through iterative development cycles and
+              user feedback, I refined the UI to enhance usability and
+              accessibility, resulting in a highly engaging digital platform.
+              <br />
+              <br />
+              Beyond technical contributions, I actively participated in
+              brainstorming sessions and team meetings, contributing innovative
+              ideas and insights to drive continuous improvement and innovation
+              within the organization. This experience not only honed my
+              technical skills but also fostered a collaborative and
+              growth-oriented mindset essential for success in the fast-paced
+              world of web development.
             </Typography>
 
-
-            <Button variant="contained" color="primary" style={{ marginTop: '20px', marginRight: '10px' }}>
+            <Button
+              variant="contained"
+              color="primary"
+              style={{ marginTop: "20px", marginRight: "10px" }}
+              href="/projects"
+            >
               Visit Projects
             </Button>
-            <Button variant="contained" color="primary" style={{ marginTop: '20px', marginRight: '10px' }} href="https://github.com/NikhilRoyal04" target="_blank" rel="noopener noreferrer" >
+            <Button
+              variant="contained"
+              color="primary"
+              style={{ marginTop: "20px", marginRight: "10px" }}
+              href="https://github.com/NikhilRoyal04"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               GitHub
             </Button>
-            <Button variant="contained" color="primary" style={{ marginTop: '20px' }} href="https://www.linkedin.com/in/nikhil-chaudhary-12819a19a" target="_blank" rel="noopener noreferrer" >
+            <Button
+              variant="contained"
+              color="primary"
+              style={{ marginTop: "20px" }}
+              href="https://www.linkedin.com/in/nikhil-chaudhary-12819a19a"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               LinkedIn
             </Button>
           </Grid>
@@ -231,22 +463,55 @@ export default function Home() {
             {skills.map((skill, index) => (
               <Box key={index} mb={3}>
                 <Box display="flex" justifyContent="space-between">
-                  <Typography variant="body1" style={{ color: '#333' }}>{skill.name}</Typography>
-                  <Typography variant="body1" style={{ color: '#333' }}>{`${skill.value}%`}</Typography>
+                  <Typography variant="body1" style={{ color: "#333" }}>
+                    {skill.name}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    style={{ color: "#333" }}
+                  >{`${skill.value}%`}</Typography>
                 </Box>
-                <LinearProgress variant="determinate" value={skill.value} sx={{ height: 10, borderRadius: 5, '& .MuiLinearProgress-bar': { backgroundColor: skill.color } }} />
+                <LinearProgress
+                  variant="determinate"
+                  value={skill.value}
+                  sx={{
+                    height: 10,
+                    borderRadius: 5,
+                    "& .MuiLinearProgress-bar": {
+                      backgroundColor: skill.color,
+                    },
+                  }}
+                />
               </Box>
             ))}
           </Grid>
         </Grid>
       </Box>
 
-
       {/* Contact Section */}
 
-      <Box mt={10} width="90%" display="flex" justifyContent="center">
-        <Box width="70%" textAlign="center" bgcolor="#f8f9fa" borderRadius="10px" p={4}>
-          <Typography variant="h3" fontWeight="bold" gutterBottom style={{ color: '#333' }}>Get in Touch</Typography>
+      <Box
+        id="contact"
+        mt={10}
+        width="90%"
+        display="flex"
+        justifyContent="center"
+      >
+        <Box
+          width="70%"
+          textAlign="center"
+          bgcolor="#f8f9fa"
+          borderRadius="10px"
+          p={4}
+        >
+          <Typography
+            variant="h3"
+            fontWeight="bold"
+            gutterBottom
+            style={{ color: "#333" }}
+          >
+            Get in Touch
+          </Typography>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               {/* First Name */}
@@ -313,18 +578,28 @@ export default function Home() {
               </Grid>
               {/* Submit Button */}
               <Grid item xs={12}>
-                <Button type="submit" variant="contained" color="primary" style={{ backgroundColor: '#1976D2' }}>Submit</Button>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  style={{ backgroundColor: "#1976D2" }}
+                >
+                  Submit
+                </Button>
               </Grid>
             </Grid>
           </form>
           <Dialog open={openDialog} onClose={handleCloseDialog}>
             <DialogTitle>
-              <Typography variant="h6" fontWeight="bold" gutterBottom>Your response was sent successfully!</Typography>
+              <Typography variant="h6" fontWeight="bold" gutterBottom>
+                Your response was sent successfully!
+              </Typography>
             </DialogTitle>
-            <DialogContent sx={{ textAlign: 'center' }}>
-
-              <CheckCircleIcon sx={{ color: 'green', fontSize: 96 }} />
-              <Typography variant="body1" fontWeight="bold">We will get back to you soon.</Typography>
+            <DialogContent sx={{ textAlign: "center" }}>
+              <CheckCircleIcon sx={{ color: "green", fontSize: 96 }} />
+              <Typography variant="body1" fontWeight="bold">
+                We will get back to you soon.
+              </Typography>
             </DialogContent>
             <DialogActions>
               <Button onClick={handleCloseDialog} color="primary">
