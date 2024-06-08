@@ -84,7 +84,7 @@ const Projects = () => {
   return (
     <Container
       maxWidth="lg"
-      style={{ paddingTop: "100px", marginBottom: "50px" }}
+      style={{ paddingTop: "80px", marginBottom: "50px" }}
     >
       <Typography variant="h3" fontWeight="bold" gutterBottom align="center">
         Projects

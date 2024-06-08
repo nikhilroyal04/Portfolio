@@ -15,6 +15,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
@@ -74,23 +75,32 @@ function Header() {
               <MenuIcon />
             </IconButton>
             {isSmallScreen && (
-              <Typography
-                variant="h6"
-                noWrap
-                sx={{
-                  flexGrow: 1,
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  fontFamily: 'monospace',
-                  fontWeight: 700,
-                  letterSpacing: '.3rem',
-                  color: 'inherit',
-                  textDecoration: 'none',
-                }}
-              >
-                PortFolio
-              </Typography>
+              <Link to="/" style={{
+                textDecoration: 'none',
+                color: 'black',
+                display: 'flex',
+                marginLeft: '40px',
+                justifyContent: 'center',
+                
+              }}>
+                <Typography
+                  variant="h6"
+                  noWrap
+                  sx={{
+                    flexGrow: 1,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    cursor: 'pointer',
+                  }}
+                >
+                  Portfolio
+                </Typography>
+              </Link>
             )}
             <Drawer
               anchor="left"
