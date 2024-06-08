@@ -30,6 +30,7 @@ export default function Home() {
   const [isTyping, setIsTyping] = useState(true);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
   const text = " Let's work together and bring your ideas to life! ";
 
   useEffect(() => {
@@ -118,68 +119,71 @@ export default function Home() {
       alignItems="center"
       flexDirection="column"
       pb={2}
-      pt={20}
       minHeight={500}
     >
       {/* Content Section */}
-      <Container
-        sx={{
-          paddingLeft: { xs: 5, sm: 10, md: 20, lg: 20 }, // Adjust these values for left margin
-          paddingRight: { xs: 5, sm: 10, md: 20, lg: 20 }, // Adjust these values for right margin
-        }}
+      <Box width="100vw" height="55vh" bgcolor="#f9fbe4" pt={20}
       >
-        <Grid container alignItems="center">
-          {/* Left section containing text and button */}
-          <Grid
-            item
-            container
-            xs={12}
-            md={8}
-            alignItems="center"
-            marginBottom={{ xs: 2, md: 0 }}
-          >
-            <Grid item xs={12}>
-              <Typography
-                variant="h5"
-                gutterBottom
-                style={{ height: "130px", overflowY: "hidden" }}
-              >
-                I'm a passionate developer with expertise in React, Node.js, and
-                MongoDB. I love building efficient, scalable, and user-friendly
-                web applications.
-                <br /> {typedText}
-              </Typography>
+        <Container
+          sx={{
+            paddingLeft: { xs: 5, sm: 10, md: 20, lg: 20 }, // Adjust these values for left margin
+            paddingRight: { xs: 5, sm: 10, md: 20, lg: 20 },
+
+          }}
+        >
+          <Grid container alignItems="center">
+            {/* Left section containing text and button */}
+            <Grid
+              item
+              container
+              xs={12}
+              md={8}
+              alignItems="center"
+              marginBottom={{ xs: 2, md: 0 }}
+            >
+              <Grid item xs={12}>
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  style={{ maxHeight: "auto", overflowY: "hidden" }}
+                >
+                  I'm a passionate developer with expertise in React, Node.js, and
+                  MongoDB. I love building efficient, scalable, and user-friendly
+                  web applications.
+                  <br /> {typedText}
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  style={{ marginTop: "20px" }}
+                  href="https://www.linkedin.com/in/nikhil-chaudhary-12819a19a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Hire me
+                </Button>
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <Button
-                variant="contained"
-                color="primary"
-                style={{ marginTop: "20px" }}
-                href="https://www.linkedin.com/in/nikhil-chaudhary-12819a19a"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Hire me
-              </Button>
-            </Grid>
+            {/* Right section containing image */}
+            {!isSmallScreen && (
+              <Grid item xs={12} md={4} container justifyContent="center">
+                <img
+                  src={Profile}
+                  alt="Your Image"
+                  style={{
+                    maxWidth: "100%",
+                    width: "350px",
+                    height: "auto",
+                    borderRadius: "50%",
+                  }}
+                />
+              </Grid>
+            )}
           </Grid>
-          {/* Right section containing image */}
-          {!isSmallScreen && (
-            <Grid item xs={12} md={4} container justifyContent="center">
-              <img
-                src={Profile}
-                alt="Your Image"
-                style={{
-                  maxWidth: "100%",
-                  width: "350px",
-                  height: "auto",
-                  borderRadius: "50%",
-                }}
-              />
-            </Grid>
-          )}
-        </Grid>
-      </Container>
+        </Container>
+      </Box>
       {/* About Me Section */}
       <Box
         id="about"
@@ -241,12 +245,20 @@ export default function Home() {
             what i provide
           </Typography>
         </Typography>
-        <Grid container spacing={5} justifyContent="center">
+        <Grid
+          container
+          spacing={isSmallScreen ? 2 : 4}
+          justifyContent="center"
+          alignItems="center"
+          direction={isSmallScreen ? "column" : "row"}
+          sx={{ padding: theme.spacing(isSmallScreen ? 2 : 4) }}
+        >
           {/* Frontend */}
-          <Grid item>
+          <Grid item xs={12} sm={6} md={4} sx={{ display: 'flex', justifyContent: 'center', marginBottom: isSmallScreen ? theme.spacing(2) : 0 }}>
             <Card
-              style={{
-                width: "400px",
+              sx={{
+                width: "100%",
+                maxWidth: isMediumScreen ? "300px" : "400px",
                 height: "300px",
                 borderRadius: "12px",
                 boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
@@ -270,10 +282,11 @@ export default function Home() {
             </Card>
           </Grid>
           {/* Backend */}
-          <Grid item>
+          <Grid item xs={12} sm={6} md={4} sx={{ display: 'flex', justifyContent: 'center', marginBottom: isSmallScreen ? theme.spacing(2) : 0 }}>
             <Card
-              style={{
-                width: "400px",
+              sx={{
+                width: "100%",
+                maxWidth: isMediumScreen ? "300px" : "400px",
                 height: "300px",
                 borderRadius: "12px",
                 boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
@@ -297,10 +310,11 @@ export default function Home() {
             </Card>
           </Grid>
           {/* Database */}
-          <Grid item>
+          <Grid item xs={12} sm={6} md={4} sx={{ display: 'flex', justifyContent: 'center', marginBottom: isSmallScreen ? theme.spacing(2) : 0 }}>
             <Card
-              style={{
-                width: "400px",
+              sx={{
+                width: "100%",
+                maxWidth: isMediumScreen ? "300px" : "400px",
                 height: "300px",
                 borderRadius: "12px",
                 boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
@@ -317,7 +331,9 @@ export default function Home() {
                 <Typography variant="h5" fontWeight="bold">
                   Database
                 </Typography>
-                <Typography variant="body2">MySQL, MongoDB, SQL</Typography>
+                <Typography variant="body2">
+                  MySQL, MongoDB, SQL
+                </Typography>
               </CardContent>
             </Card>
           </Grid>

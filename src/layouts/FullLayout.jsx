@@ -6,11 +6,11 @@ import Button from "../components/Home/Button";
 
 export default function FullLayout() {
   return (
-    <>
+    <div style={{ overflowX: "hidden" }}>
       <Header />
       <Outlet />
       <Footer />
       <Button />
-    </>
+    </div>
   );
 }

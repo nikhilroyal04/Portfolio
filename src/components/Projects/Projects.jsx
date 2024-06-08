@@ -6,8 +6,9 @@ import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button"; // Import the Button component from Material-UI
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward"; // Import the ArrowForwardIcon
+import Button from "@mui/material/Button";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import ACADEMY from "../../assets/images/ACADEMY.png";
 import MUI_ADMIN from "../../assets/images/MUI_ADMIN.png";
 
@@ -63,13 +64,27 @@ const projects = [
       "Implemented RESTful APIs to enable seamless communication between the frontend and backend, facilitating data exchange and system interoperability.",
     ],
   },
+  {
+    id: 5,
+    title: "My Portfolio Website",
+    image: "portfolio-website-image-url.jpg",
+    website: "/",
+    points: [
+      "Designed and developed a responsive portfolio website using Material-UI and React.",
+      "Showcases my projects, skills, and services in a visually appealing and user-friendly manner.",
+      "Implemented responsive design principles to ensure optimal viewing experience across various devices, including desktops, tablets, and smartphones.",
+      "Utilized React Router for seamless navigation between different sections of the portfolio.",
+      "Incorporated various Material-UI components such as AppBar, Drawer, Cards, and Buttons to enhance the website's functionality and aesthetics.",
+      "Optimized for performance and accessibility, ensuring fast load times and compliance with web accessibility standards.",
+    ],
+  },
 ];
 
 const Projects = () => {
   return (
     <Container
       maxWidth="lg"
-      style={{ marginTop: "50px", marginBottom: "50px" }}
+      style={{ paddingTop: "100px", marginBottom: "50px" }}
     >
       <Typography variant="h3" fontWeight="bold" gutterBottom align="center">
         Projects
@@ -102,9 +117,19 @@ const Projects = () => {
                         </li>
                       ))}
                     </ul>
-                    {/* Button directing to the site */}
-                    <Box mt={3} display="flex" justifyContent="flex-end">
+                    <Box mt={3} display="flex">
                       <Button
+                        variant="outlined"
+                        color="primary"
+                        startIcon={<GitHubIcon />}
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        GitHub
+                      </Button>
+                      <Button
+                        sx={{ ml: 2 }}
                         variant="contained"
                         color="primary"
                         endIcon={<ArrowForwardIcon />}
@@ -114,6 +139,7 @@ const Projects = () => {
                       >
                         Visit Site
                       </Button>
+
                     </Box>
                   </Grid>
                 </Grid>

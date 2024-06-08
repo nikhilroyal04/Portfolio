@@ -13,13 +13,18 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
 import { Link as RouterLink } from 'react-router-dom';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
-const sections = ['Home', 'Services', 'Skills', 'About', 'Contact'];
-const sectionIds = ['#home', '#services', '#skills', '#about', '#contact'];
+const sections = ['Home', 'Services', 'Skills', 'Projects', 'About', 'Contact'];
+const sectionIds = ['#home', '#services', '#skills', '#projects', '#about', '#contact'];
 
 function Header() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
@@ -37,7 +42,7 @@ function Header() {
   };
 
   return (
-    <AppBar position="sticky" sx={{ bgcolor: 'lightblue', color: 'black' }}>
+    <AppBar position="fixed" sx={{ bgcolor: 'lightgrey', color: 'black' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <ScatterPlotIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -56,7 +61,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            My PortFolio
+            My Portfolio
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -68,73 +73,82 @@ function Header() {
             >
               <MenuIcon />
             </IconButton>
+            {isSmallScreen && (
+              <Typography
+                variant="h6"
+                noWrap
+                sx={{
+                  flexGrow: 1,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                PortFolio
+              </Typography>
+            )}
             <Drawer
               anchor="left"
               open={drawerOpen}
               onClose={handleDrawerClose}
             >
-              <Box
-                sx={{ width: 250 }}
-                role="presentation"
-                onClick={handleDrawerClose}
-                onKeyDown={handleDrawerClose}
-              >
+              <Box sx={{ width: 250 }}>
+                <Box sx={{ bgcolor: 'lightblue', p: 2 }}>
+                  <Typography variant="h4" fontWeight="bold" color="black" align='center' pt={2} pb={2}>
+                    Nikhil Chaudhary
+                  </Typography>
+                </Box>
+                <Divider />
                 <List>
                   {sections.map((section, index) => (
-                    <ListItem button key={section} onClick={() => scrollToSection(sectionIds[index])}>
-                      <ListItemText primary={section} />
+                    <ListItem button key={section} onClick={() => {
+                      handleDrawerClose();
+                      if (section === 'Projects') {
+                        window.location.href = '/projects';
+                      } else {
+                        scrollToSection(sectionIds[index]);
+                      }
+                    }}>
+                      <ListItemText primary={section} sx={{ textAlign: 'center', fontWeight: "bold" }} />
                     </ListItem>
                   ))}
-                  <ListItem button to="/projects">
-                    <ListItemText primary="Projects" />
-                  </ListItem>
                 </List>
+                <Divider />
+                <Box sx={{ p: 2 }}>
+                  <Button variant="contained" color="primary" fullWidth>
+                    Explore
+                  </Button>
+                </Box>
               </Box>
             </Drawer>
           </Box>
-
-          <ScatterPlotIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component={RouterLink}
-            to="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            My PortFolio
-          </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {sections.map((section, index) => (
               <Button
                 key={section}
-                onClick={() => scrollToSection(sectionIds[index])}
-                sx={{ my: 2, color: 'black', display: 'block' }}
+                onClick={() => {
+                  if (section === 'Projects') {
+                    window.location.href = '/projects';
+                  } else {
+                    scrollToSection(sectionIds[index]);
+                  }
+                }}
+                sx={{ my: 2, color: 'black', display: 'block', fontWeight: "bold" }}
               >
                 {section}
               </Button>
             ))}
-            <Button
-              component={RouterLink}
-              to="/projects"
-              sx={{ my: 2, color: 'black', display: 'block' }}
-            >
-              Projects
-            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <IconButton sx={{ p: 0 }}>
-              <Avatar alt="Nikhil Chaudhary" src="/static/images/avatar/2.jpg" />
+              <Avatar alt="Nikhil Chaudhary" src="/static/images/avatar/2.jpg" sx={{ width: 45, height: 45 }} />
             </IconButton>
           </Box>
         </Toolbar>

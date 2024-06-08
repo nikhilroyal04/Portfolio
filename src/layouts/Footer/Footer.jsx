@@ -27,7 +27,7 @@ function Footer() {
             <Typography variant="h6" gutterBottom fontSize={25}>
               About Me
             </Typography>
-            <Typography variant="body1" fontSize={15} width={350}>
+            <Typography variant="body1" fontSize={15} width={330}>
               Dedicated to crafting exceptional web applications, I bring a blend of passion and expertise to every project. With a focus on innovation and user-centric design, I strive to create digital experiences that captivate and inspire. Let's work together to turn your ideas into reality.
             </Typography>
           </Grid>
