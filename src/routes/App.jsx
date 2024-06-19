@@ -1,13 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { RouterProvider, Routes, } from "react-router-dom";
 import routes from "./routes"; 
 
 const App = () => {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <RouterProvider basename={process.env.PUBLIC_URL}>
       <Routes>
         {routes}
       </Routes>
-    </BrowserRouter>
+    </RouterProvider>
   );
 };
 
