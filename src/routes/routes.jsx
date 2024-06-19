@@ -19,7 +19,7 @@ const routes = createBrowserRouter(
         <Route path="/projects" element={<Projects />} />
       </Route>
 
-      <Route path="*" element={<Not_Found />} />
+      {/* <Route path="*" element={<Not_Found />} /> */}
     </>
   )
 );
