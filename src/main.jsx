@@ -1,13 +1,11 @@
-// main.jsx or index.js
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import App from './routes/App';
+import ReactDOM from 'react-dom/client';
+import { RouterProvider } from 'react-router-dom';
+import routes from './routes/routes';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+    <RouterProvider router={routes} >
+    </RouterProvider>
+  </React.StrictMode>, 
 );
