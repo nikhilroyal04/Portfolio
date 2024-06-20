@@ -18,6 +18,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import avtimg from "../../assets/images/profile.jpg"
 
 const sections = ['Home', 'Services', 'Skills', 'Projects', 'About', 'Contact'];
 const sectionIds = ['#home', '#services', '#skills', '#projects', '#about', '#contact'];
@@ -51,7 +52,7 @@ function Header() {
             variant="h6"
             noWrap
             component={RouterLink}
-            to="/"
+            to="/Portfolio/"
             sx={{
               mr: 8,
               display: { xs: 'none', md: 'flex' },
@@ -75,7 +76,7 @@ function Header() {
               <MenuIcon />
             </IconButton>
             {isSmallScreen && (
-              <Link to="/" style={{
+              <Link to="/Portfolio" style={{
                 textDecoration: 'none',
                 color: 'black',
                 display: 'flex',
@@ -119,7 +120,7 @@ function Header() {
                     <ListItem button key={section} onClick={() => {
                       handleDrawerClose();
                       if (section === 'Projects') {
-                        window.location.href = '/projects';
+                        window.location.href = '/Portfolio/projects';
                       } else {
                         scrollToSection(sectionIds[index]);
                       }
@@ -144,7 +145,7 @@ function Header() {
                 key={section}
                 onClick={() => {
                   if (section === 'Projects') {
-                    window.location.href = '/projects';
+                    window.location.href = '/Portfolio/projects';
                   } else {
                     scrollToSection(sectionIds[index]);
                   }
@@ -158,7 +159,7 @@ function Header() {
 
           <Box sx={{ flexGrow: 0 }}>
             <IconButton sx={{ p: 0 }}>
-              <Avatar alt="Nikhil Chaudhary" src="/static/images/avatar/2.jpg" sx={{ width: 45, height: 45 }} />
+              <Avatar alt="Nikhil Chaudhary" src={avtimg} sx={{ width: 45, height: 45 }} />
             </IconButton>
           </Box>
         </Toolbar>
