@@ -12,10 +12,10 @@ import Projects from "../components/Projects/Projects";
 const routes = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<FullLayout />}>
-        <Route index element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
+      <Route path="/Portfolio" element={<FullLayout />}>
+        <Route path="/Portfolio" element={<Home />} />
+        <Route path="/Portfolio/home" element={<Home />} />
+        <Route path="/Portfolio/projects" element={<Projects />} />
       </Route>
       <Route path="*" element={<Not_Found />} />
     </>

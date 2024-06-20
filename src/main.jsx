@@ -7,8 +7,6 @@ const basename = import.meta.env.PUBLIC_URL || '/Portfolio/'; // Default to '/Po
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename={basename}>
       <RouterProvider router={routes} />
-    </BrowserRouter>
   </React.StrictMode>
 );
