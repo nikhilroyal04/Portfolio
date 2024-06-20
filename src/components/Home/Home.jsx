@@ -482,10 +482,6 @@ export default function Home() {
                   <Typography variant="body1" style={{ color: "#333" }}>
                     {skill.name}
                   </Typography>
-                  <Typography
-                    variant="body1"
-                    style={{ color: "#333" }}
-                  >{`${skill.value}%`}</Typography>
                 </Box>
                 <LinearProgress
                   variant="determinate"
