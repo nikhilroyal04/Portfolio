@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, RouterProvider } from 'react-router-dom';
 import routes from './routes/routes';
 
-const basename = import.meta.process.env.PUBLIC_URL || '/Portfolio/'; // Default to '/Portfolio/'
+const basename = import.meta.env.PUBLIC_URL || '/Portfolio/'; // Default to '/Portfolio/'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
