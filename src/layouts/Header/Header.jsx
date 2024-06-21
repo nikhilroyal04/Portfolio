@@ -65,8 +65,8 @@ function Header() {
           >
             My Portfolio
           </Typography>
+          {isSmallScreen && (
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="menu"
@@ -75,34 +75,36 @@ function Header() {
             >
               <MenuIcon />
             </IconButton>
+          )}
+          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+
             {isSmallScreen && (
-              <Link to="/Portfolio" style={{
-                textDecoration: 'none',
-                color: 'black',
+              <Link to="/" style={{
                 display: 'flex',
-                marginLeft: '40px',
-                justifyContent: 'center',
-                
+                alignItems: 'center',
+                textDecoration: 'none',
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
               }}>
                 <Typography
                   variant="h6"
-                  noWrap
+                  component={RouterLink}
+                  to="/"
                   sx={{
-                    flexGrow: 1,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
                     fontFamily: 'monospace',
                     fontWeight: 700,
                     letterSpacing: '.3rem',
                     color: 'inherit',
-                    cursor: 'pointer',
+                    textDecoration: 'none',
                   }}
                 >
                   Portfolio
                 </Typography>
               </Link>
             )}
+
             <Drawer
               anchor="left"
               open={drawerOpen}
@@ -120,7 +122,7 @@ function Header() {
                     <ListItem button key={section} onClick={() => {
                       handleDrawerClose();
                       if (section === 'Projects') {
-                        window.location.href = '/Portfolio/projects';
+                        window.location.href = '/projects';
                       } else {
                         scrollToSection(sectionIds[index]);
                       }
@@ -145,7 +147,7 @@ function Header() {
                 key={section}
                 onClick={() => {
                   if (section === 'Projects') {
-                    window.location.href = '/Portfolio/projects';
+                    window.location.href = '/projects';
                   } else {
                     scrollToSection(sectionIds[index]);
                   }
