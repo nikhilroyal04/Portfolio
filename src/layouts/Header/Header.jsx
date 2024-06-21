@@ -52,7 +52,7 @@ function Header() {
             variant="h6"
             noWrap
             component={RouterLink}
-            to="/Portfolio/"
+            to="/"
             sx={{
               mr: 8,
               display: { xs: 'none', md: 'flex' },
