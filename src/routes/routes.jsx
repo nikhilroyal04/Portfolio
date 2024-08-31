@@ -10,15 +10,12 @@ const routes = createBrowserRouter(
     <>
       <Route path="/" element={<FullLayout />}>
         <Route index element={<Home />} />
-        <Route path="home" element={<Home />} />
-        <Route path="projects" element={<Projects />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
       </Route>
       <Route path="*" element={<Not_Found />} />
     </>
   ),
-  {
-    basename: '/Portfolio',
-  }
 );
 
 export default routes;

@@ -122,7 +122,7 @@ function Header() {
                     <ListItem button key={section} onClick={() => {
                       handleDrawerClose();
                       if (section === 'Projects') {
-                        window.location.href = '/Portfolio/projects';
+                        window.location.href = '/projects';
                       } else {
                         scrollToSection(sectionIds[index]);
                       }
@@ -147,7 +147,7 @@ function Header() {
                 key={section}
                 onClick={() => {
                   if (section === 'Projects') {
-                    window.location.href = '/Portfolio/projects';
+                    window.location.href = '/projects';
                   } else {
                     scrollToSection(sectionIds[index]);
                   }

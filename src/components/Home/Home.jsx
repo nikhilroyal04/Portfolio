@@ -448,7 +448,7 @@ export default function Home() {
               variant="contained"
               color="primary"
               style={{ marginTop: "20px", marginRight: "10px" }}
-              href="/Portfolio/projects"
+              href="/projects"
             >
               Visit Projects
             </Button>
