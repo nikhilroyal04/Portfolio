@@ -17,20 +17,21 @@ import {
   useMediaQuery,
   Container,
 } from "@mui/material";
-import Profile from "../../assets/images/profile.jpg";
 import About1 from "../../assets/images/About1.jpg";
-import About2 from "../../assets/images/About2.jpg";
 import Service1 from "../../assets/images/Service1.webp";
 import Service2 from "../../assets/images/Service2.jpg";
 import Service3 from "../../assets/images/Service3.jpeg";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import axios from "axios";
 
 export default function Home() {
   const [typedText, setTypedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
+  const [phoneError, setPhoneError] = useState("");
+  const [apiError, setApiError] = useState("");
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
-  const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const text = " Let's work together and bring your ideas to life! ";
 
   useEffect(() => {
@@ -67,14 +68,37 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setOpenDialog(true);
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
+
+    if (formData.phone.length < 10 || formData.phone.length > 11) {
+      setPhoneError("Enter a valid number");
+      return;
+    }
+
+    setPhoneError("");
+    setApiError("");
+
+    axios
+      .post("https://contact-form-server-one.vercel.app/api/contact", formData)
+      .then((response) => {
+        // Clear form fields
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+
+        // Open success dialog
+        setOpenDialog(true);
+      })
+      .catch((error) => {
+        console.error("Error submitting form:", error);
+        setApiError("Failed to send message. Please check credentials.");
+
+        // Do not open the dialog if there's an error
+        setOpenDialog(false);
+      });
   };
 
   const handleCloseDialog = () => {
@@ -122,13 +146,11 @@ export default function Home() {
       minHeight={500}
     >
       {/* Content Section */}
-      <Box width="100vw" height="55vh" bgcolor="#f9fbe4" pt={20}
-      >
+      <Box width="100vw" height="70vh" bgcolor="#f9fbe4" pt={20}>
         <Container
           sx={{
             paddingLeft: { xs: 5, sm: 10, md: 20, lg: 20 }, // Adjust these values for left margin
             paddingRight: { xs: 5, sm: 10, md: 20, lg: 20 },
-
           }}
         >
           <Grid container alignItems="center">
@@ -147,9 +169,9 @@ export default function Home() {
                   gutterBottom
                   style={{ maxHeight: "auto", overflowY: "hidden" }}
                 >
-                  I'm a passionate developer with expertise in React, Node.js, and
-                  MongoDB. I love building efficient, scalable, and user-friendly
-                  web applications.
+                  I'm a passionate developer with expertise in React, Node.js,
+                  and MongoDB. I love building efficient, scalable, and
+                  user-friendly web applications.
                   <br /> {typedText}
                 </Typography>
               </Grid>
@@ -170,8 +192,8 @@ export default function Home() {
             {!isSmallScreen && (
               <Grid item xs={12} md={4} container justifyContent="center">
                 <img
-                  src={Profile}
-                  alt="Your Image"
+                  src="https://res.cloudinary.com/dqe1ygj6a/image/upload/v1725084398/Personal/wntrupcbx9avnbkyjwk2.jpg"
+                  alt="Nikhil Chaudhary"
                   style={{
                     maxWidth: "100%",
                     width: "350px",
@@ -187,7 +209,7 @@ export default function Home() {
       {/* About Me Section */}
       <Box
         id="about"
-        mt={20}
+        mt={10}
         width="70%"
         textAlign="center"
         p={3}
@@ -254,7 +276,17 @@ export default function Home() {
           sx={{ padding: theme.spacing(isSmallScreen ? 2 : 4) }}
         >
           {/* Frontend */}
-          <Grid item xs={12} sm={6} md={4} sx={{ display: 'flex', justifyContent: 'center', marginBottom: isSmallScreen ? theme.spacing(2) : 0 }}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: isSmallScreen ? theme.spacing(2) : 0,
+            }}
+          >
             <Card
               sx={{
                 width: "100%",
@@ -282,7 +314,17 @@ export default function Home() {
             </Card>
           </Grid>
           {/* Backend */}
-          <Grid item xs={12} sm={6} md={4} sx={{ display: 'flex', justifyContent: 'center', marginBottom: isSmallScreen ? theme.spacing(2) : 0 }}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: isSmallScreen ? theme.spacing(2) : 0,
+            }}
+          >
             <Card
               sx={{
                 width: "100%",
@@ -310,7 +352,17 @@ export default function Home() {
             </Card>
           </Grid>
           {/* Database */}
-          <Grid item xs={12} sm={6} md={4} sx={{ display: 'flex', justifyContent: 'center', marginBottom: isSmallScreen ? theme.spacing(2) : 0 }}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: isSmallScreen ? theme.spacing(2) : 0,
+            }}
+          >
             <Card
               sx={{
                 width: "100%",
@@ -331,9 +383,7 @@ export default function Home() {
                 <Typography variant="h5" fontWeight="bold">
                   Database
                 </Typography>
-                <Typography variant="body2">
-                  MySQL, MongoDB, SQL
-                </Typography>
+                <Typography variant="body2">MySQL, MongoDB, SQL</Typography>
               </CardContent>
             </Card>
           </Grid>
@@ -571,6 +621,9 @@ export default function Home() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
+                  error={Boolean(phoneError)}
+                  helperText={phoneError}
+                  inputProps={{ maxLength: 11 }}
                 />
               </Grid>
               {/* Message Textarea */}
@@ -588,7 +641,13 @@ export default function Home() {
                   required
                 />
               </Grid>
-              {/* Submit Button */}
+              {apiError && (
+                <Grid item xs={12}>
+                  <Typography color="error" variant="body2" align="center">
+                    {apiError}
+                  </Typography>
+                </Grid>
+              )}
               <Grid item xs={12}>
                 <Button
                   type="submit"
