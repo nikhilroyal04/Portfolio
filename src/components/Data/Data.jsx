@@ -19,8 +19,8 @@ export default function Data() {
   }, []);
 
   return (
-    <Box p={3}>
-      <Typography variant="h4" gutterBottom>
+    <Box p={3} mt={5}>
+      <Typography variant="h5" fontWeight='bolder' gutterBottom>
         Contact Data
       </Typography>
       {error && (
