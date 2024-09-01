@@ -41,7 +41,7 @@ function Footer() {
             <Link href="#about" color="inherit" underline="hover" fontSize={20}>
               About
             </Link><br />
-            <Link href="#projects" color="inherit" underline="hover" fontSize={20}>
+            <Link href="/projects" color="inherit" underline="hover" fontSize={20}>
               Projects
             </Link><br />
             <Link href="#contact" color="inherit" underline="hover" fontSize={20}
@@ -66,10 +66,10 @@ function Footer() {
                 href="https://www.linkedin.com/in/nikhil-chaudhary-12819a19a"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ fontSize: '30px', transition: 'box-shadow 0.3s' }} // Add transition for smoother effect
+                style={{ fontSize: '30px', transition: 'box-shadow 0.3s' }} 
                 sx={{
                   '&:hover': {
-                    boxShadow: '0 8px 16px rgba(255, 255, 255, 0.2)' // White box shadow on hover
+                    boxShadow: '0 8px 16px rgba(255, 255, 255, 0.2)' 
                   }
                 }}
               >
@@ -81,10 +81,10 @@ function Footer() {
                 href="https://github.com/NikhilRoyal04"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ fontSize: '30px', transition: 'box-shadow 0.3s' }} // Add transition for smoother effect
+                style={{ fontSize: '30px', transition: 'box-shadow 0.3s' }} 
                 sx={{
                   '&:hover': {
-                    boxShadow: '0 8px 16px rgba(255, 255, 255, 0.2)' // White box shadow on hover
+                    boxShadow: '0 8px 16px rgba(255, 255, 255, 0.2)' 
                   }
                 }}
               >
@@ -96,10 +96,10 @@ function Footer() {
                 href="https://www.instagram.com/nikhilroyal04"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ fontSize: '30px', transition: 'box-shadow 0.3s' }} // Add transition for smoother effect
+                style={{ fontSize: '30px', transition: 'box-shadow 0.3s' }}
                 sx={{
                   '&:hover': {
-                    boxShadow: '0 8px 16px rgba(255, 255, 255, 0.2)' // White box shadow on hover
+                    boxShadow: '0 8px 16px rgba(255, 255, 255, 0.2)'
                   }
                 }}
               >

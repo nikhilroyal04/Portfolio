@@ -207,8 +207,8 @@ function Header() {
             <IconButton sx={{ p: 0 }}>
               <Avatar
                 alt="Nikhil Chaudhary"
-                src={avtimg}
-                sx={{ width: 45, height: 45 }}
+                src='https://res.cloudinary.com/dqe1ygj6a/image/upload/v1725176320/Personal/qxjnlnupkuahtz4pup5t.png'
+                sx={{ width: 50, height: 50 }}
               />
             </IconButton>
           </Box>
