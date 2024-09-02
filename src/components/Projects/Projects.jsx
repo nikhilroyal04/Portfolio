@@ -11,12 +11,16 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import ACADEMY from "../../assets/images/ACADEMY.png";
 import MUI_ADMIN from "../../assets/images/MUI_ADMIN.png";
+import PORTFOLIO from "../../assets/images/Portfolio.png";
+import ADMIN_CHAKRA from "../../assets/images/Chakra_Panel.png";
+import BACKEND_GAME from "../../assets/images/Backend_Game.png";
 
 const projects = [
   {
     id: 1,
     title: "Admin Panels: Material-UI",
     image: MUI_ADMIN,
+    github: "https://github.com/nikhilroyal04/Flexy",
     website: "https://admin.ledocity.com/",
     points: [
       "Developed a comprehensive admin panel using Material-UI, a React UI framework known for its rich set of components and sleek design.",
@@ -28,7 +32,8 @@ const projects = [
   {
     id: 2,
     title: "Admin Panels: Chakra UI",
-    image: "chakra-ui-image-url.jpg",
+    image: ADMIN_CHAKRA,
+    github: "https://github.com/nikhilroyal04/Admin_chakra",
     website: "https://panel.hullu.in/",
     points: [
       "Designed and implemented an admin dashboard using Chakra UI, a modular and accessible component library for React applications.",
@@ -40,7 +45,8 @@ const projects = [
   {
     id: 3,
     title: "Backend Project - Color Game",
-    image: "color-game-image-url.jpg",
+    image: BACKEND_GAME,
+    github: "https://github.com/nikhilroyal04/Backend_Game",
     website: "https://panel.hullu.in/",
     points: [
       "Developed a robust backend system for a color game using Node.js and Express.js, providing a scalable and efficient architecture to handle game data and logic.",
@@ -54,6 +60,7 @@ const projects = [
     id: 4,
     title: "Academy Management Panel",
     image: ACADEMY,
+    github: "https://github.com/nikhilroyal04/Academy_Management_Panel",
     website: "https://admin.ledocity.com/",
     points: [
       "Developed a comprehensive academy management panel encompassing both frontend and backend components.",
@@ -67,7 +74,8 @@ const projects = [
   {
     id: 5,
     title: "My Portfolio Website",
-    image: "portfolio-website-image-url.jpg",
+    image: PORTFOLIO,
+    github: "https://github.com/nikhilroyal04/Portfolio",
     website: "/",
     points: [
       "Designed and developed a responsive portfolio website using Material-UI and React.",
