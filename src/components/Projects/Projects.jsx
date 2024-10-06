@@ -14,8 +14,27 @@ import MUI_ADMIN from "../../assets/images/MUI_ADMIN.png";
 import PORTFOLIO from "../../assets/images/Portfolio.png";
 import ADMIN_CHAKRA from "../../assets/images/Chakra_Panel.png";
 import BACKEND_GAME from "../../assets/images/Backend_Game.png";
+import GURU_IPHONE from "../../assets/images/Guru_Iphone.png";
 
 const projects = [
+  {
+    id: 6,
+    title: "Guru iPhone E-commerce Platform",
+    image: GURU_IPHONE,
+    github: "https://github.com/nikhilroyal04/Website_iPhone",
+    website: "https://guruiphone.vercel.app/",
+    points: [
+      "Developed a full-stack e-commerce platform using MERN stack (MongoDB, Express, React, Node.js) with Redux for state management and Chakra UI for a responsive design.",
+      "Allows users to purchase old iPhones, Android devices, and accessories at affordable prices with seamless UX for both anonymous and logged-in users.",
+      "Implemented JWT-based authentication with cookie sessions, ensuring secure login and data protection, while using bcrypt for password encryption.",
+      "Built features like product filtering, sorting, pagination, and query parameters for a smooth browsing experience.",
+      "Handled media uploads efficiently using Multer, ensuring a streamlined process for adding product images.",
+      "Designed a fully responsive interface using Chakra UI, providing optimal user experience across different devices including desktops, tablets, and mobile phones.",
+      "Added cart functionality for both anonymous and authenticated users, and used Redux for managing API calls and application state through Axios.",
+      "Integrated Lottie animations to enhance visual appeal and user engagement, resulting in a modern and interactive interface.",
+      "Optimized for performance and scalability, with a console manager to avoid unnecessary logs in production, and a response manager for consistent API handling.",
+    ],
+  },
   {
     id: 1,
     title: "Admin Panels: Material-UI",
@@ -147,7 +166,6 @@ const Projects = () => {
                       >
                         Visit Site
                       </Button>
-
                     </Box>
                   </Grid>
                 </Grid>
