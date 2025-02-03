@@ -117,14 +117,19 @@ export default function Home() {
     { name: "HTML", value: 100, color: "#6DD5FA" },
     { name: "CSS", value: 95, color: "#FF92A7" },
     { name: "JavaScript", value: 85, color: "#FCE788" },
-    { name: "React", value: 85, color: "#FFC947" },
-    { name: "Material-UI", value: 90, color: "#69F0AE" },
-    { name: "Chakra UI", value: 95, color: "#FF8A80" },
-    { name: "Node.js", value: 78, color: "#A7F0BA" },
-    { name: "Express", value: 82, color: "#FFD180" },
-    { name: "MySQL", value: 98, color: "#81D4FA" },
-    { name: "MongoDB", value: 90, color: "#FFA8A8" },
+    { name: "React", value: 85, color: "#FFB74D" },
+    { name: "Material-UI", value: 90, color: "#4CAF50" },
+    { name: "Chakra UI", value: 95, color: "#E91E63" },
+    { name: "Node Js", value: 78, color: "#8BC34A" },
+    { name: "Express Js", value: 82, color: "#FF9800" },
+    { name: "MySQL", value: 98, color: "#03A9F4" },
+    { name: "MongoDB", value: 90, color: "#9C27B0" },
+    { name: "Firebase", value: 70, color: "#FF5722" },
+    { name: "Figma", value: 65, color: "#009688" },
+    { name: "JWT", value: 85, color: "#795548" },
+    { name: "Redux", value: 85, color: "#673AB7" },
   ];
+  
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -435,12 +440,12 @@ export default function Home() {
             </Typography>
 
             <Typography
-              variant="h4"
-              fontWeight="bold"
-              gutterBottom
-              style={{ color: "#333", marginTop: "20px" }}
-            >
-              Experience
+  variant="h4"
+  fontWeight="bold"
+  gutterBottom
+  style={{ color: "#333", marginTop: "20px" }}
+>
+  Experience
             </Typography>
             <Typography
               variant="body1"
@@ -453,21 +458,17 @@ export default function Home() {
             >
               <strong>Internship at Tangential Ed. Power Pvt. Ltd:</strong>
               <br />
-              During my enriching internship at Tangential Ed. Power Pvt. Ltd, I
-              played a pivotal role as a Full Stack Web Developer, where I
-              immersed myself in every stage of the web development lifecycle. I
-              led the design and implementation of a dynamic, responsive, and
-              user-centric website, ensuring a seamless user experience through
-              intuitive UI/UX design principles.
+              During my internship at Tangential Ed. Power Pvt. Ltd. (January 2023 – June
+              2023), I worked as a MERN Stack Developer Intern, where I contributed to
+              full-stack web applications using MongoDB, Express.js, React, and Node.js.
+              My role involved working on user authentication, role-based access control,
+              and creating responsive UI designs.
               <br />
               <br />
-              One of the highlights of my experience was developing a robust
-              CRUD (Create, Read, Update, Delete) application from scratch,
-              showcasing my proficiency in both frontend and backend
-              development. By leveraging technologies like React for the
-              frontend and Node.js coupled with MongoDB for the backend, I
-              engineered a scalable and efficient system that met the diverse
-              needs of our users.
+              I also collaborated with cross-functional teams to deliver scalable
+              solutions, conducted code reviews, and optimized application performance.
+              Additionally, I managed databases using MySQL and MongoDB, ensuring data
+              integrity and efficiency.
             </Typography>
             <Typography
               variant="body1"
@@ -478,21 +479,42 @@ export default function Home() {
                 maxWidth: "100%",
               }}
             >
-              Additionally, I collaborated closely with the design team to
-              translate wireframes and mockups into interactive and visually
-              stunning web interfaces. Through iterative development cycles and
-              user feedback, I refined the UI to enhance usability and
-              accessibility, resulting in a highly engaging digital platform.
+              <strong>Full-Time Role at Tangential Ed. Power Pvt. Ltd:</strong>
+              <br />
+              After my internship, I continued as a Full Stack Developer (July 2024 –
+              November 2024), focusing on building scalable MERN stack applications. I
+              developed responsive UIs, integrated advanced features like role-based
+              access control, and optimized databases using MongoDB and MySQL.
               <br />
               <br />
-              Beyond technical contributions, I actively participated in
-              brainstorming sessions and team meetings, contributing innovative
-              ideas and insights to drive continuous improvement and innovation
-              within the organization. This experience not only honed my
-              technical skills but also fostered a collaborative and
-              growth-oriented mindset essential for success in the fast-paced
-              world of web development.
+              Working with cross-functional teams, I ensured high-quality, user-centric
+              solutions while conducting code reviews and enhancing application
+              performance.
             </Typography>
+            <Typography
+              variant="body1"
+              style={{
+                lineHeight: "1.6",
+                color: "#555",
+                textAlign: "left",
+                maxWidth: "100%",
+              }}
+            >
+              <strong>Full Stack Developer at CMT AI:</strong>
+              <br />
+              Currently, I am working as a Full Stack Developer at CMT AI (January 2025 –
+              Present), where I build and maintain end-to-end web applications. My focus
+              is on creating intuitive front-end interfaces and efficient back-end
+              systems, collaborating with cross-functional teams to deliver scalable,
+              high-performance solutions.
+              <br />
+              <br />
+              My expertise includes API integration, database management, and
+              implementing best practices for code quality, security, and testing. I also
+              work on optimizing application performance and ensuring seamless user
+              experiences across platforms.
+            </Typography>
+
 
             <Button
               variant="contained"
